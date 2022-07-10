@@ -32,7 +32,7 @@ It's pretty easy to use the application. On the home page (http://localhost:5000
 
 Here's a video showing how to use the application:
 
-<video src="resources/vidoes/header.mp4"></video>
+<video src="https://github.com/twyle/repo-template/blob/development/resources/videos/header.mp4"></video>
 
 ## Features
 
