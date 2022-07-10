@@ -118,6 +118,8 @@ Here is how to set up the application locally:
   
  #### 2. Project Management
  
+   1. **Coding standards**
+ 
  #### 3. Development Workflow
 
 ## Deployment
