@@ -132,6 +132,23 @@ Here is how to set up the application locally:
 
 ## Deployment
 
+The deployemt process for this application can be devided into two groups:
+
+ * Initial Deployment
+ * Incremental deployment
+
+The initial deployment describes the first dployment to the AWS EC2 instance. The process involves the following steps:
+
+ 1. Setting up an AWS EC2 instance
+ 2. Clong the project
+ 3. Setting up the application
+ 4. Creating a service
+ 5. Setting up the application domain
+ 6. Setting up the application server with the domain
+ 7. Launching the application
+
+The incremental deployment describes the process of deploying new changes to the already deployed application.
+
 ## Releases
 
 ## Contribution
