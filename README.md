@@ -24,19 +24,47 @@ This is a User managementsystem that enables an admin user to register and then 
 
 It's pretty easy to use the application. On the home page (http://localhost:5000/apidocs):
 
- 1. Register as an admin, using a unique email address, unique name and a password.
+ 1. Register as an admin, using a unique email address, unique name and a password. 
  2. Head over to the email address that you provided and click on the confirmation link.
  3. At the application home page, log in with the email address and password, to get back a token.
  4. Use the token, to authorize the user.
  5. Make requests to the user routes to create, update, view or delete a user.
 
+Here's a video showing how to use the application:
+
 ## Features
+
+This application has several features including:
+ 1. Deployed to an AWS Instance using a custom domain language.
+ 2. Versioned using Git and Hosted on GitHub.
+ 3. Auto-deployed to AWS using GitHub Actions.
+ 4. Uses gunicorn as the application server and nginx as the proxy.
+ 5. Uses AWS SES to send emails.
+ 6. Uses AWS Opensearch and Firehose for logging as filebeats.
+ 7. Uses AWS Secrets manager to manage the application secrets and AWS KMS for key management.
+ 8. Uses PostgreSQL for data storage.
+ 9. Uses JSON Web Tokens to authorize users.
+ 10. Uses AWS Route53 to route traffic to the application.
 
 ## Structure
 
 ## Local Setup
 
 ## Development
+
+ #### 1. Application Design
+ 
+  1. **Database**
+  
+  2. **Routes**
+  
+  3. **Logging**
+  
+  4. **Security**
+  
+ #### 2. Project Management
+ 
+ #### 3. Development Workflow
 
 ## Deployment
 
