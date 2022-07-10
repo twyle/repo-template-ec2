@@ -66,6 +66,8 @@ project
     │   file021.txt
     │   file022.txt
 ```
+* **Folder** </br>
+  *Folder content description*
 
 ## Local Setup
 
