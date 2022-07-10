@@ -2,6 +2,11 @@
 
 > This flask application enables enables an admin to register then authorizes them to create new users.
 
+<p align="center">
+  <img title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Lyle's streak" src="https://img.shields.io/badge/django-%23092E20.svg?     style=for-the-badge&logo=django&logoColor=white"/>
+  <img title="Bandit badge" alt="Bandit badge" src="https://img.shields.io/badge/security-bandit-yellow.svg"
+</p>
+
 [![security: bandit][bandit-image]][bandit-url]
 [![Imports: isort][isort-image]][isort-url]
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
