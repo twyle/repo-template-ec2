@@ -46,7 +46,26 @@ This application has several features including:
  9. Uses JSON Web Tokens to authorize users.
  10. Uses AWS Route53 to route traffic to the application.
 
-## Structure
+## Application Structure
+
+```
+project
+│   README.md
+│   file001.txt    
+│
+└───folder1
+│   │   file011.txt
+│   │   file012.txt
+│   │
+│   └───subfolder1
+│       │   file111.txt
+│       │   file112.txt
+│       │   ...
+│   
+└───folder2
+    │   file021.txt
+    │   file022.txt
+```
 
 ## Local Setup
 
