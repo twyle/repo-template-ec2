@@ -127,6 +127,7 @@ Here is how to set up the application locally:
       3. Test driven developmnt
       4. CI/CD pipeline
       5. Commit messages
+      6. Releases
  
  #### 3. Development Workflow
 
@@ -158,9 +159,27 @@ The incremental deployment describes the process of deploying new changes to the
 
 ## Contribution
 
+1. Fork it https://github.com/twyle/flask-linode-deployment/fork
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
 ## Developer
 
+Lyle Okoth – [@lylethedesigner](https://twitter.com/lylethedesigner) on twitter </br>
+
+[lyle okoth](https://medium.com/@lyle-okoth) on medium </br> 
+
+My email is lyceokoth@gmail.com </br>
+
+Here is my [GitHub Profile](https://github.com/twyle/)
+
+You can also find me on [LinkedIN](https://www.linkedin.com/feed/)
+
 ## License
+
+Distributed under the MIT license. See ``LICENSE`` for more information.
 
 
 [bandit-image]: https://img.shields.io/badge/security-bandit-yellow.svg
