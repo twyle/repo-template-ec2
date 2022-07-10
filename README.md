@@ -1,6 +1,6 @@
 # A Template For Creating Repositories
 
-> A short description of the project
+> This flask application enables enables an admin to register then authorizes them to create new users.
 
 [![security: bandit][bandit-image]][bandit-url]
 [![Imports: isort][isort-image]][isort-url]
