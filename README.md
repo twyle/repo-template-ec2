@@ -147,7 +147,12 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
  6. Setting up the application server with the domain
  7. Launching the application
 
-The incremental deployment describes the process of deploying new changes to the already deployed application.
+The incremental deployment describes the process of deploying new changes to the already deployed application. It involves the following steps:
+
+ 1. Tunelling into the deployment server
+ 2. Pulling the latest changes
+ 3. Running database migrations
+ 4. Restarting the application
 
 ## Releases
 
