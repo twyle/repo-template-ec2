@@ -45,6 +45,8 @@ This application has several features including:
  8. Uses PostgreSQL for data storage.
  9. Uses JSON Web Tokens to authorize users.
  10. Uses AWS Route53 to route traffic to the application.
+ 11. Built using flask, flask-mail, flask-jwt
+ 12. Documented using swagger
 
 ## Application Structure
 
@@ -118,7 +120,13 @@ Here is how to set up the application locally:
   
  #### 2. Project Management
  
-   1. **Coding standards**
+   1. **Coding standards** </br>
+      The application had to adhere to the following coding standards:
+      1. Variable names
+      2. Function names
+      3. Test driven developmnt
+      4. CI/CD pipeline
+      5. Commit messages
  
  #### 3. Development Workflow
 
