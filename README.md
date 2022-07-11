@@ -263,6 +263,17 @@ Here is how to set up the application locally:
       | Route       | Method      | Description      |
       | ----------- | ----------- |----------------- |
       | '/'         | GET         | Get the home page |
+      | '/user'     | GET         | Get a single user by supplying an ID |
+      | '/user'     | POST        | Create a new user by supplying the email address |
+      | '/user'     | PUT         | Update a single user's data by supplying the user ID and email address |
+      | '/user'     | DELETE      | Delete a single user by supplying the users ID |
+      | '/users'    | GET         | Get the list of all created users |
+      | '/auth/register'     | POST         | Register a new admin. |
+      | '/auth/login'     | POST         | Login a registered admin to get an access token. |
+      | '/auth/me'     | GET         | Get a logged in admins data. |
+      | '/auth/me'     | PUT         | Update a logged in admins data. |
+      | '/auth/me'     | DELETE      | Delete a logged in admins data. |
+      | '/auth/admins'     | GET         | Get all logged in admins data. |
         
   3. **Logging**
    
@@ -275,14 +286,20 @@ Here is how to set up the application locally:
  #### 2. Project Management
  
    1. **Coding standards** </br>
+   
       The application had to adhere to the following coding standards:
       1. Variable names
       2. Function names
       3. Test driven development
-      4. CI/CD pipeline has to pass before deployments.
-      5. Commit messages format has to be adhered to.
-      6. Only push code to github using development branches.
-      7. Releases have to be tagged.
+      4. Individual modules need 60% coverage and an overall coverage of 60%.
+      5. CI/CD pipeline has to pass before deployments.
+      6. Commit messages format has to be adhered to.
+      7. Only push code to github using development branches.
+      8. Releases have to be tagged.
+   
+   2. **Application development process management** </br>
+   
+      The project uses JIRA for management.
  
  #### 3. Development Workflow
 
@@ -294,7 +311,7 @@ Here is how to set up the application locally:
   4. The release branch holds all the assets used when creating a release.
   5. The production branch holds the code for the currently deployed application.
    
-The development workflow follows th following steps:
+The development workflow follows the following steps:
 
   1. A feature branch is created for the development of a new feature.
   2. The code is then pushed to GitHub, triggering the feature-development-workflow.yml workflow. If all the tests pass, the feature is reviewde and merged into the development branch.
