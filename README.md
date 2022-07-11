@@ -253,10 +253,20 @@ Here is how to set up the application locally:
  #### 1. Application Design
  
   1. **Database**
+   
+      The database was designed to store the Admin details as well as the users details. These are stored in the tables admin and users.
   
   2. **Routes**
-  
+   
+      Here are the application routes:
+
+      | Route       | Method      | Description      |
+      | ----------- | ----------- |----------------- |
+      | '/'         | GET         | Get the home page |
+        
   3. **Logging**
+   
+      The application logs to the standard output as well as to AWS OpnSearch using AWS Firehose. Both logging options use custom loggers.
   
   4. **Security**
   
