@@ -374,6 +374,10 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
    
       Restart the created service.
 
+8. **Setting up Logging**
+
+      This involves creating a FirehoseDeliveryStream as well as AWS OpnSearch.
+
 The incremental deployment describes the process of deploying new changes to the already deployed application. It involves the following steps:
 
  1. Tunelling into the deployment server
