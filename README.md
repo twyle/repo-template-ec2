@@ -206,17 +206,25 @@ Here is how to set up the application locally:
       ```sh
         FLASK_APP=api/__init__.py
         FLASK_ENV=development
+
         SECRET_KEY=supersecretkey
+
         POSTGRES_HOST=<YOUR-IP-ADDRESS>
         POSTGRES_DB=lyle
         POSTGRES_PORT=5432
         POSTGRES_USER=postgres
         POSTGRES_PASSWORD=lyle
+
         MAIL_HOST=<YOUR-MAIL-HOST>
         MAIL_PORT=<YOUR-MAIL-PORT>
         MAIL_USERNAME=<YOUR-USER-NAME>
         MAIL_PASSWORD=<YOUR-PASSWORD>
+
         FIREHOSE_DELIVERY_STREAM=flask-logging-firehose-stream
+
+        AWS_KEY=<YOUR-AWS-KEY>
+        AWS_SECRET=<YOUR-AWS-SECRET>
+        AWS_REGION=<YOUR-AWS-REGION>
       ```
 
       Then create the database secrets:
@@ -320,6 +328,38 @@ The development workflow follows the following steps:
   5. For creatinga release, the staging branch is merged into the release branch. This happens when a tag is pushed to GitHub.
   6. Once a release is created, the release branch is merged into the production branch, which is deployed into production.
 
+The workflows require a couple of secrets to work:
+
+      ```sh
+        FLASK_APP=api/__init__.py
+        FLASK_ENV=development
+
+        SECRET_KEY=supersecretkey
+
+        POSTGRES_HOST=<YOUR-IP-ADDRESS>
+        POSTGRES_DB=lyle
+        POSTGRES_PORT=5432
+        POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=lyle
+
+        MAIL_HOST=<YOUR-MAIL-HOST>
+        MAIL_PORT=<YOUR-MAIL-PORT>
+        MAIL_USERNAME=<YOUR-USER-NAME>
+        MAIL_PASSWORD=<YOUR-PASSWORD>
+
+        FIREHOSE_DELIVERY_STREAM=flask-logging-firehose-stream
+
+        AWS_KEY=<YOUR-AWS-KEY>
+        AWS_SECRET=<YOUR-AWS-SECRET>
+        AWS_REGION=<YOUR-AWS-REGION>
+
+        HOST_IP=<AWS-EC2-STATIC-IP>
+        AWS_PRIVATE_KEY=<AWS-PRIVATE-KEY>
+        APP_DIR=/home/user/repo-template
+        USER_NAME=user
+        USER_PASSWORD=userpassword
+      ```
+
 ## Deployment
 
 The deployemt process for this application can be divided into two groups:
@@ -385,7 +425,38 @@ The incremental deployment describes the process of deploying new changes to the
  3. Running database migrations
  4. Restarting the application
 
-This is handled using GitHub Actions.
+This is handled using GitHub Actions:
+
+```sh
+DeployDev:
+    name: Deploy to Dev
+    # if: github.event_name == 'pull_request'
+    needs: [Test-Local]
+    runs-on: ubuntu-latest
+    environment:
+      name: Development
+
+    steps:
+
+      - name: Deploy
+        run: echo I am deploying the api to AWS
+
+      - name: Deploy in EC2
+        env:
+          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+          HOST_NAME : ${{ secrets.HOST_NAME  }}
+          USER_NAME : ${{ secrets.USER_NAME  }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          APP_DIR: ${{secrets.APP_DIR}}
+          SERVICE_NAME: ${{secrets.SERVICE_NAME}}
+
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} "
+            cd ${APP_DIR} &&
+            git pull &&
+            echo ${USER_PASSWORD} | sudo -S systemctl restart ${SERVICE_NAME} "
+```
 
 ## Releases
 
