@@ -269,6 +269,8 @@ Here is how to set up the application locally:
       The application logs to the standard output as well as to AWS OpnSearch using AWS Firehose. Both logging options use custom loggers.
   
   4. **Security**
+
+      The application uses JSON Web Tokens to authorize access to protected routes. The passwords are also encrypted.
   
  #### 2. Project Management
  
@@ -276,16 +278,34 @@ Here is how to set up the application locally:
       The application had to adhere to the following coding standards:
       1. Variable names
       2. Function names
-      3. Test driven developmnt
-      4. CI/CD pipeline
-      5. Commit messages
-      6. Releases
+      3. Test driven development
+      4. CI/CD pipeline has to pass before deployments.
+      5. Commit messages format has to be adhered to.
+      6. Only push code to github using development branches.
+      7. Releases have to be tagged.
  
  #### 3. Development Workflow
 
+ The application uses atleast 5 branches:
+
+  1. Features branch used to develop new features.
+  2. Development branch used to hold the most upto date features that are yet to be deployed.
+  3. Staging branch holds the code that is currently being tested for production.
+  4. The release branch holds all the assets used when creating a release.
+  5. The production branch holds the code for the currently deployed application.
+   
+The development workflow follows th following steps:
+
+  1. A feature branch is created for the development of a new feature.
+  2. The code is then pushed to GitHub, triggering the feature-development-workflow.yml workflow. If all the tests pass, the feature is reviewde and merged into the development branch.
+  3. The code in the development branch is then deployed to the development environment. If the deployment is succesful, the development branch is merged into the staging branch.
+  4. This triggers the staging workflow. If all the tests are succesful, this branch is reviewed and deployed to a staging environment.
+  5. For creatinga release, the staging branch is merged into the release branch. This happens when a tag is pushed to GitHub.
+  6. Once a release is created, the release branch is merged into the production branch, which is deployed into production.
+
 ## Deployment
 
-The deployemt process for this application can be devided into two groups:
+The deployemt process for this application can be divided into two groups:
 
  * Initial Deployment
  * Incremental deployment
