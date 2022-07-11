@@ -168,12 +168,85 @@ Here is how to set up the application locally:
       ```
 
   2. Navigate into the cloned repo:
+   
+      ```sh
+      cd repo-template
+      ```
+
   3. Create a Virtual environment:
+   
+      ```sh
+      python3 -m venv venv
+      ```
+   
   4. Activate the virtual environmnet:
+   
+      ```sh
+      source venv/bin/activate
+      ```
+
   5. Install the project dependancies:
+   
+      ```sh
+      make update # update the package manager 
+      make install-dev  # install the development requirements
+      make install  # install the runtime requirements
+      make pre-commit # initialize pre-commit
+      ```
+
   6. Create the environment variables:
+   
+      ```sh
+      cd services/web
+      touch .env
+      ```
+
+      Then paste the following into the file:
+
+      ```sh
+        FLASK_APP=api/__init__.py
+        FLASK_ENV=development
+        SECRET_KEY=supersecretkey
+        POSTGRES_HOST=<YOUR-IP-ADDRESS>
+        POSTGRES_DB=lyle
+        POSTGRES_PORT=5432
+        POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=lyle
+        MAIL_HOST=<YOUR-MAIL-HOST>
+        MAIL_PORT=<YOUR-MAIL-PORT>
+        MAIL_USERNAME=<YOUR-USER-NAME>
+        MAIL_PASSWORD=<YOUR-PASSWORD>
+        FIREHOSE_DELIVERY_STREAM=flask-logging-firehose-stream
+      ```
+
+      Then create the database secrets:
+
+      ```sh
+      cd services/database
+      touch .env
+      ```
+
+      Then paste the following into the file:
+
+      ```sh
+        POSTGRES_DB=lyle
+        POSTGRES_PORT=5432
+        POSTGRES_USER=postgres
+        POSTGRES_PASSWORD=lyle
+      ```
+
   7. Start the database containers:
+   
+      ```sh
+      make start-db-containers
+      ```
+
   8. Start the application:
+   
+      ```sh
+      make run
+      ```
+
 
 ## Development
 
