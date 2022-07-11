@@ -61,24 +61,34 @@ repo-template/
 └───.github/
 │     │   
 │     └───workflows/ 
-|             feature-development-workflow.yml
-|             development-workflow.yml
-|             staging-workflow.yml
-|             release-workflow.yml
-|             production-workflow.yml
+|             |
+|             └───feature-development-workflow.yml
+|             |
+|             └───development-workflow.yml
+|             |
+|             └───staging-workflow.yml
+|             |
+|             └───release-workflow.yml
+|             |
+|             └───production-workflow.yml
 │   
 └───resources/       
 │     |   
 │     └───images/  
-│     |     header.jpg
+│     |     |
+|     |     └───header.jpg
 |     └───videos/
-|           header.gif
+|           |
+|           └───header.gif
 |
 └───services/       
 │     |   
 │     └───database/  
-│     |     .env
-|     |     database-compose.yml
+│     |     |
+|     |     └───.env
+|     |     |
+|     |     └───database-compose.yml
+|     |
 |     └───web/
 |           |
 |           └───api/
@@ -88,47 +98,64 @@ repo-template/
 |           |    └───config
 |           |
 |           └───tests/
+|           |
 |           └───.env
+|           |
 |           └───Dockerfile.dev
+|           |
 |           └───Dockerfile.prod
+|           |
 |           └───manage.py
+|           |
 |           └───requirements.txt
 |
 └───.gitignore
+|
 └───.pre-commit-config.yaml
+|
 └───.pylintrc
+|
 └───docker-compose.yml
+|
 └───LICENSE
+|
 └───Makefile
+|
 └───pytest.ini
+|
 └───README.md
+|
 └───requirements-dev.txt
+|
 └───setup.cfg
 ```
 
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/.github/workflows** </br>
+  *Holds the GitHub Action workflow files.*
 
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/resources** </br>
+  *Holds the resources used to describe this project.*
 
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/services/database** </br>
+  *Holds the database compose file and the database environment variables.*
 
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/services/web** </br>
+  *Holds the web application.*
   
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/services/web/api** </br>
+  *Holds the api code*
 
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/services/web/api/config** </br>
+  *Holds the application configuration.*
 
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/services/web/api/blueprints** </br>
+  *Holds the flask blueprints.*
 
-* **Folder** </br>
-  *Folder content description*
+* **repo-template/services/web/api/blueprints/default** </br>
+  *Holds the default blueprint.*
+
+* **repo-template/services/web/tests** </br>
+  *Holds the api tests.*
 
 ## Local Setup
 
