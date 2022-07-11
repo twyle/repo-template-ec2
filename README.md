@@ -304,6 +304,8 @@ Here is how to set up the application locally:
       6. Commit messages format has to be adhered to.
       7. Only push code to github using development branches.
       8. Releases have to be tagged.
+      9. Use pre-commit to run code quality checks
+      10. Use comitizen to format commit messages
    
    2. **Application development process management** </br>
    
