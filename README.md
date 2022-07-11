@@ -55,23 +55,55 @@ This application has several features including:
 
 ## Application Structure
 
-```
-project
-│   README.md
-│   file001.txt    
-│
-└───folder1
-│   │   file011.txt
-│   │   file012.txt
-│   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
+```sh
+repo-template/
 │   
-└───folder2
-    │   file021.txt
-    │   file022.txt
+└───.github/
+│     │   
+│     └───workflows/ 
+|             feature-development-workflow.yml
+|             development-workflow.yml
+|             staging-workflow.yml
+|             release-workflow.yml
+|             production-workflow.yml
+│   
+└───resources/       
+│     |   
+│     └───images/  
+│     |     header.jpg
+|     └───videos/
+|           header.gif
+|
+└───services/       
+│     |   
+│     └───database/  
+│     |     .env
+|     |     database-compose.yml
+|     └───web/
+|           |
+|           └───api/
+|           |    |
+|           |    └───blueprints/
+|           |    |
+|           |    └───config
+|           |
+|           └───tests/
+|           └───.env
+|           └───Dockerfile.dev
+|           └───Dockerfile.prod
+|           └───manage.py
+|           └───requirements.txt
+|
+└───.gitignore
+└───.pre-commit-config.yaml
+└───.pylintrc
+└───docker-compose.yml
+└───LICENSE
+└───Makefile
+└───pytest.ini
+└───README.md
+└───requirements-dev.txt
+└───setup.cfg
 ```
 
 * **Folder** </br>
@@ -185,4 +217,3 @@ You can also find me on [LinkedIN](https://www.linkedin.com/feed/)
 ## License
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
-
