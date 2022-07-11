@@ -459,7 +459,11 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
 
 8. **Setting up Logging**
 
-      This involves creating a FirehoseDeliveryStream as well as AWS OpnSearch.
+      This involves creating a FirehoseDeliveryStream as well as AWS OpenSearch.
+
+      Once the application is up and running, you can view the logs by heading over to the OpenSearch dashboard. Here is a video showing some logs:
+
+      ![](resources/videos/header.gif)
 
 The incremental deployment describes the process of deploying new changes to the already deployed application. It involves the following steps:
 
@@ -505,7 +509,7 @@ DeployDev:
 
 ## Contribution
 
-1. Fork it https://github.com/twyle/flask-linode-deployment/fork
+1. Fork it https://github.com/twyle/repo-template/fork
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
