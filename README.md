@@ -161,14 +161,19 @@ repo-template/
 
 Here is how to set up the application locally:
 
-  1. Clone the application repo:
-  2. Navigate into the cloned repo
-  3. Create a Virtual environment
-  4. Activate the virtual environmnet
-  5. Install the project dependancies
-  6. Create the environment variables
-  7. Start the database containers
-  8. Start the application
+  1. Clone the application repo:</br>
+   
+      ```sh
+      git clone https://github.com/twyle/repo-template.git
+      ```
+
+  2. Navigate into the cloned repo:
+  3. Create a Virtual environment:
+  4. Activate the virtual environmnet:
+  5. Install the project dependancies:
+  6. Create the environment variables:
+  7. Start the database containers:
+  8. Start the application:
 
 ## Development
 
