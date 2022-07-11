@@ -358,6 +358,7 @@ The workflows require a couple of secrets to work:
         APP_DIR=/home/user/repo-template
         USER_NAME=user
         USER_PASSWORD=userpassword
+        SERVICE_NAME=gunicorn
       ```
 
 ## Deployment
@@ -401,13 +402,55 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
    
       Create a new service that automatically start the application when the server is booted. Enable the service and start it.
 
+      Here is the service template:
+
+      ```sh
+        [Unit]
+        Description=Gunicorn instance to serve the api
+        After=network.target
+
+        [Service]
+        User=lyle
+        Group=lyle
+        WorkingDirectory=/home/lyle/repo-template/services/web
+        Environment="PATH=/home/lyle/repo-template/services/web/venv/bin"
+        EnvironmentFile=/home/lyle/.env
+        ExecStart=/home/lyle/repo-template/services/web/venv/bin/gunicorn --workers 4 --bind 0.0.0.0:5000 manage:app
+
+        [Install]
+        WantedBy=multi-user.target
+      ```
+
  5. **Setting up the application domain**
    
       Purchase a domain name then use Route53 to create a hosted zone.
 
  6. **Setting up the application server with the domain**
    
-      Update the nginx config to route traffic form port 80 to port 5000 for the gunicorn server.
+      Update the nginx config to route traffic form port 80 to port 5000 for the gunicorn server. Here is a sample config:
+
+      ```sh
+          server {
+                  listen 80 default_server;
+                  listen [::]:80 default_server;
+
+                  server_name _; # replace with specific domain name like sanjeev.com
+
+                  location / {
+                          proxy_pass http://localhost:5000;
+                          proxy_http_version 1.1;
+                          proxy_set_header X-Real-IP $remote_addr;
+                          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                          proxy_set_header Upgrade $http_upgrade;
+                          proxy_set_header Connection 'upgrade';
+                          proxy_set_header Host $http_host;
+                          proxy_set_header X-NginX-Proxy true;
+                          proxy_redirect off;
+                  }
+
+          }        
+      ```
+
       Use certbot to generate an SSL certficate for your domain.
 
  7. **Launching the application**
@@ -444,7 +487,7 @@ DeployDev:
       - name: Deploy in EC2
         env:
           PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-          HOST_NAME : ${{ secrets.HOST_NAME  }}
+          HOST_NAME : ${{ secrets.HOST_IP  }}
           USER_NAME : ${{ secrets.USER_NAME  }}
           USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
           APP_DIR: ${{secrets.APP_DIR}}
