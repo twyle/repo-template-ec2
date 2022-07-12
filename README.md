@@ -373,6 +373,20 @@ The workflows require a couple of secrets to work:
         USER_PASSWORD=userpassword
         SERVICE_NAME=gunicorn
       ```
+      
+The workflows also require the followingenvironments to work:
+
+  1. Test
+  2. Staging
+  3. Development
+  4. Production
+  
+And within each environment, create a secret that indicates the environment type i.e
+
+  1. Test -> ```FLASK_ENV=test```
+  2. Staging -> ```FLASK_ENV=stage```
+  3. Development -> ```FLASK_ENV=development```
+  4. Production -> ```FLASK_ENV=production```
 
 ## Deployment
 
