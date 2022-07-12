@@ -38,7 +38,11 @@ It's pretty easy to use the application. On the home page (http://localhost:5000
 
 Here's a video showing how to use the application:
 
-![](resources/videos/header.gif) ![](resources/videos/header.gif) 
+![](resources/videos/header.gif) 
+
+<p align=right>
+  <img width=150 src="resources/videos/header.gif" />
+</p>
 
 ## Features
 
