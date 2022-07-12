@@ -39,13 +39,13 @@ It's pretty easy to use the application. On the home page (http://localhost:5000
 Here's a video showing how to use the application:
 
 <p align=center>
-  <img width=400 src="resources/videos/header.gif" />
-  <img width=400 src="resources/videos/header.gif" />
+  <img width=400 src="resources/videos/register-admin.gif" />
+  <img width=400 src="resources/videos/login-admin.gif" />
 </p>
 
 <p align=center>
-  <img width=400 src="resources/videos/header.gif" />
-  <img width=400 src="resources/videos/header.gif" />
+  <img width=400 src="resources/videos/authorize-admin.gif" />
+  <img width=400 src="resources/videos/create-user.gif" />
 </p>
 
 ## Features
@@ -370,14 +370,14 @@ The workflows require a couple of secrets to work:
         USER_PASSWORD=userpassword
         SERVICE_NAME=gunicorn
       ```
-      
+
 The workflows also require the followingenvironments to work:
 
   1. Test
   2. Staging
   3. Development
   4. Production
-  
+
 And within each environment, create a secret that indicates the environment type i.e
 
   1. Test -> ```FLASK_ENV=test```
