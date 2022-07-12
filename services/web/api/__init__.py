@@ -3,7 +3,6 @@
 import os
 import sys
 
-from dotenv import load_dotenv
 from flasgger import LazyJSONEncoder
 from flask import Flask
 
@@ -13,9 +12,6 @@ from .blueprints.extensions import app_logger, db, jwt, swagger
 from .error_handlers import handle_bad_request
 from .extensions import migrate
 from .helpers import are_environment_variables_set, set_flask_environment
-
-load_dotenv()
-
 
 if not are_environment_variables_set():
     msg = 'Unable to set Environment variables. Application existing...'

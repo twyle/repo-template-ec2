@@ -20,7 +20,7 @@
   <img title="Bandit badge" alt="Bandit badge" src="https://img.shields.io/badge/gunicorn-%298729.svg?style=flat&logo=gunicorn&logoColor=white" />
 </p>
 
- ![](resources/images/header.jpg)
+![](resources/images/header.jpg)
 
 ## Project Overview
 
@@ -38,8 +38,15 @@ It's pretty easy to use the application. On the home page (http://localhost:5000
 
 Here's a video showing how to use the application:
 
-![](resources/videos/header.gif) 
-![](resources/videos/header.gif)
+<p align=center>
+  <img width=400 src="resources/videos/register-admin.gif" />
+  <img width=400 src="resources/videos/login-admin.gif" />
+</p>
+
+<p align=center>
+  <img width=400 src="resources/videos/authorize-admin.gif" />
+  <img width=400 src="resources/videos/create-user.gif" />
+</p>
 
 ## Features
 
@@ -208,9 +215,6 @@ Here is how to set up the application locally:
       Then paste the following into the file:
 
       ```sh
-        FLASK_APP=api/__init__.py
-        FLASK_ENV=development
-
         SECRET_KEY=supersecretkey
 
         POSTGRES_HOST=<YOUR-IP-ADDRESS>
@@ -367,6 +371,20 @@ The workflows require a couple of secrets to work:
         SERVICE_NAME=gunicorn
       ```
 
+The workflows also require the followingenvironments to work:
+
+  1. Test
+  2. Staging
+  3. Development
+  4. Production
+
+And within each environment, create a secret that indicates the environment type i.e
+
+  1. Test -> ```FLASK_ENV=test```
+  2. Staging -> ```FLASK_ENV=stage```
+  3. Development -> ```FLASK_ENV=development```
+  4. Production -> ```FLASK_ENV=production```
+
 ## Deployment
 
 The deployemt process for this application can be divided into two groups:
@@ -513,6 +531,32 @@ DeployDev:
 
 ## Releases
 
+## v0.3.0 (2022-07-12)
+
+### Fix
+
+- checking for large file uploads.
+- provides the jwt secrets.
+- loads the env vars in config.
+- loads the env vars before app creation.
+- updated the config options.
+
+### Feat
+
+- shows using the app.
+
+## v0.2.0 (2022-07-12)
+
+### Fix
+
+- restores the old animation.
+- updates the workflow badges.
+
+### Feat
+
+- adds the app animation.
+- adds the workflow badges.
+
 ## v0.1.0 (2022-07-12)
 
 ### Feat
@@ -551,6 +595,7 @@ DeployDev:
 - uses gif.
 - using mp4
 - fixes the video tag.
+
 
 ## Contribution
 
