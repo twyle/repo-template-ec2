@@ -8,7 +8,7 @@ install-dev:
 	@pip install -r requirements-dev.txt
 
 run:
-	@cd services/web/ && gunicorn -w 4 -b 0.0.0.0:5000 manage:app
+	@cd services/web/ && gunicorn -b 0.0.0.0:5000 manage:app
 
 test:
 	@python -m pytest
@@ -23,10 +23,10 @@ bump-tag:
 	@cz bump --check-consistency --changelog
 
 start-db-containers:
-	@sudo docker compose -f services/database/database-compose.yml up --build -d
+	@sudo docker-compose -f services/database/database-compose.yml up --build -d
 
 stop-db-containers:
-	@sudo docker compose -f services/database/database-compose.yml down -v
+	@sudo docker-compose -f services/database/database-compose.yml down -v
 
 create-db:
 	@python services/web/manage.py create_db
