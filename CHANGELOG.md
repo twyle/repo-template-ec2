@@ -1,3 +1,17 @@
+## v0.3.0 (2022-07-12)
+
+### Fix
+
+- checking for large file uploads.
+- provides the jwt secrets.
+- loads the env vars in config.
+- loads the env vars before app creation.
+- updated the config options.
+
+### Feat
+
+- shows using the app.
+
 ## v0.2.0 (2022-07-12)
 
 ### Fix
