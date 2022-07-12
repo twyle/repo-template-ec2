@@ -2,7 +2,10 @@
 """Provide commands for starting the application, creating the database and seeding the database."""
 from api import create_app, db
 from api.blueprints.default.models import User
+from dotenv import load_dotenv
 from flask.cli import FlaskGroup
+
+load_dotenv()
 
 app = create_app()
 cli = FlaskGroup(create_app=create_app)
