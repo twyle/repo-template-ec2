@@ -215,9 +215,6 @@ Here is how to set up the application locally:
       Then paste the following into the file:
 
       ```sh
-        FLASK_APP=api/__init__.py
-        FLASK_ENV=development
-
         SECRET_KEY=supersecretkey
 
         POSTGRES_HOST=<YOUR-IP-ADDRESS>
