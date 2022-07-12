@@ -40,6 +40,8 @@ Here's a video showing how to use the application:
 
 ![](resources/videos/header.gif)
 
+![](resources/videos/header.gif)
+
 ## Features
 
 This application has several features including:
