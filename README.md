@@ -20,7 +20,7 @@
   <img title="Bandit badge" alt="Bandit badge" src="https://img.shields.io/badge/gunicorn-%298729.svg?style=flat&logo=gunicorn&logoColor=white" />
 </p>
 
- ![](resources/images/header.jpg)
+![](resources/images/header.jpg)
 
 ## Project Overview
 
@@ -38,7 +38,6 @@ It's pretty easy to use the application. On the home page (http://localhost:5000
 
 Here's a video showing how to use the application:
 
-![](resources/videos/header.gif) 
 ![](resources/videos/header.gif)
 
 ## Features
