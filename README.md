@@ -3,8 +3,8 @@
 > This flask application enables enables an admin to register then authorizes them to create new users.
 
 <p align="center">
-  <img title="Bandit badge" alt="Bandit badge" src="https://github.com/twyle/repo-template/actions/actions/workflows/feature-development-workflow.yml/badge.svg" />
-  <img title="Bandit badge" alt="Bandit badge" src="https://github.com/twyle/repo-template/actions/actions/workflows/development-workflow.yml/badge.svg" />
+  <img title="Bandit badge" alt="Bandit badge" src="https://github.com/twyle/repo-template/actions/workflows/feature-development-workflow.yml/badge.svg" />
+  <img title="Bandit badge" alt="Bandit badge" src="https://github.com/twyle/repo-template/actions/workflows/development-workflow.yml/badge.svg" />
   <img title="Bandit badge" alt="Bandit badge" src="https://github.com/twyle/repo-template/actions/workflows/staging-workflow.yml/badge.svg" />
   <img title="Bandit badge" alt="Bandit badge" src="https://github.com/twyle/repo-template/actions/workflows/release-workflow.yml/badge.svg" />
   <img title="Bandit badge" alt="Bandit badge" src="https://github.com/twyle/repo-template/actions/workflows/production-workflow.yml/badge.svg" />
