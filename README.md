@@ -38,7 +38,15 @@ It's pretty easy to use the application. On the home page (http://localhost:5000
 
 Here's a video showing how to use the application:
 
-![](resources/videos/header.gif)
+<p align=center>
+  <img width=400 src="resources/videos/header.gif" />
+  <img width=400 src="resources/videos/header.gif" />
+</p>
+
+<p align=center>
+  <img width=400 src="resources/videos/header.gif" />
+  <img width=400 src="resources/videos/header.gif" />
+</p>
 
 ## Features
 
@@ -207,9 +215,6 @@ Here is how to set up the application locally:
       Then paste the following into the file:
 
       ```sh
-        FLASK_APP=api/__init__.py
-        FLASK_ENV=development
-
         SECRET_KEY=supersecretkey
 
         POSTGRES_HOST=<YOUR-IP-ADDRESS>
@@ -365,6 +370,20 @@ The workflows require a couple of secrets to work:
         USER_PASSWORD=userpassword
         SERVICE_NAME=gunicorn
       ```
+      
+The workflows also require the followingenvironments to work:
+
+  1. Test
+  2. Staging
+  3. Development
+  4. Production
+  
+And within each environment, create a secret that indicates the environment type i.e
+
+  1. Test -> ```FLASK_ENV=test```
+  2. Staging -> ```FLASK_ENV=stage```
+  3. Development -> ```FLASK_ENV=development```
+  4. Production -> ```FLASK_ENV=production```
 
 ## Deployment
 

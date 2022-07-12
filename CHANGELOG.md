@@ -1,3 +1,15 @@
+## v0.2.0 (2022-07-12)
+
+### Fix
+
+- restores the old animation.
+- updates the workflow badges.
+
+### Feat
+
+- adds the app animation.
+- adds the workflow badges.
+
 ## v0.1.0 (2022-07-12)
 
 ### Feat
