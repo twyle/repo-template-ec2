@@ -40,7 +40,7 @@ def set_flask_environment(app) -> str:
             app.config.from_object('api.config.config.StagingConfig')
             app_logger.info('The FLASK_ENV is set to stage. Using the stage config.')
     except KeyError:
-        app.config.from_object('api.config.DevelopmentConfig')
+        app.config.from_object('api.config.config.DevelopmentConfig')
         app_logger.warning('The FLASK_ENV is not set. Using development.')
         return 'development'
 
@@ -137,13 +137,6 @@ def are_environment_variables_set() -> bool:  # pylint: disable=R0912,R0915,R091
         True if all the environment variables are set else False if any is missing.
 
     """
-    # try:
-    #     os.environ['FLASK_APP']  # pylint: disable=W0104
-    #     app_logger.info(f"The FLASK_APP is set to {os.environ['FLASK_APP']}")
-    # except KeyError:
-    #     app_logger.exception('The FLASK_APP is not set')
-    #     return False
-
     try:
         os.environ['FLASK_ENV']  # pylint: disable=W0104
         app_logger.info(f"The FLASK_ENV is set to {os.environ['FLASK_ENV']}")

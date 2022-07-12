@@ -1,3 +1,29 @@
+## v0.3.0 (2022-07-12)
+
+### Fix
+
+- checking for large file uploads.
+- provides the jwt secrets.
+- loads the env vars in config.
+- loads the env vars before app creation.
+- updated the config options.
+
+### Feat
+
+- shows using the app.
+
+## v0.2.0 (2022-07-12)
+
+### Fix
+
+- restores the old animation.
+- updates the workflow badges.
+
+### Feat
+
+- adds the app animation.
+- adds the workflow badges.
+
 ## v0.1.0 (2022-07-12)
 
 ### Feat
