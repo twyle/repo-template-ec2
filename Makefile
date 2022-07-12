@@ -19,6 +19,9 @@ pre-commit:
 initial-tag:
 	@git tag -a -m "Initial tag." v0.0.1
 
+init-cz:
+	@cz init
+
 bump-tag:
 	@cz bump --check-consistency --changelog
 

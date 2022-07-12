@@ -27,7 +27,7 @@ This is a User managementsystem that enables an admin user to register and then 
 
 It's pretty easy to use the application. On the home page (http://localhost:5000/apidocs):
 
- 1. Register as an admin, using a unique email address, unique name and a password. 
+ 1. Register as an admin, using a unique email address, unique name and a password.
  2. Head over to the email address that you provided and click on the confirmation link.
  3. At the application home page, log in with the email address and password, to get back a token.
  4. Use the token, to authorize the user.
@@ -57,10 +57,10 @@ This application has several features including:
 
 ```sh
 repo-template/
-│   
+│
 └───.github/
-│     │   
-│     └───workflows/ 
+│     │
+│     └───workflows/
 |             |
 |             └───feature-development-workflow.yml
 |             |
@@ -71,19 +71,19 @@ repo-template/
 |             └───release-workflow.yml
 |             |
 |             └───production-workflow.yml
-│   
-└───resources/       
-│     |   
-│     └───images/  
+│
+└───resources/
+│     |
+│     └───images/
 │     |     |
 |     |     └───header.jpg
 |     └───videos/
 |           |
 |           └───header.gif
 |
-└───services/       
-│     |   
-│     └───database/  
+└───services/
+│     |
+│     └───database/
 │     |     |
 |     |     └───.env
 |     |     |
@@ -141,7 +141,7 @@ repo-template/
 
 * **repo-template/services/web** </br>
   *Holds the web application.*
-  
+
 * **repo-template/services/web/api** </br>
   *Holds the api code*
 
@@ -162,40 +162,40 @@ repo-template/
 Here is how to set up the application locally:
 
   1. Clone the application repo:</br>
-   
+
       ```sh
       git clone https://github.com/twyle/repo-template.git
       ```
 
   2. Navigate into the cloned repo:
-   
+
       ```sh
       cd repo-template
       ```
 
   3. Create a Virtual environment:
-   
+
       ```sh
       python3 -m venv venv
       ```
-   
+
   4. Activate the virtual environmnet:
-   
+
       ```sh
       source venv/bin/activate
       ```
 
   5. Install the project dependancies:
-   
+
       ```sh
-      make update # update the package manager 
+      make update # update the package manager
       make install-dev  # install the development requirements
       make install  # install the runtime requirements
       make pre-commit # initialize pre-commit
       ```
 
   6. Create the environment variables:
-   
+
       ```sh
       cd services/web
       touch .env
@@ -244,13 +244,13 @@ Here is how to set up the application locally:
       ```
 
   7. Start the database containers:
-   
+
       ```sh
       make start-db-containers
       ```
 
   8. Start the application:
-   
+
       ```sh
       make run
       ```
@@ -259,13 +259,13 @@ Here is how to set up the application locally:
 ## Development
 
  #### 1. Application Design
- 
+
   1. **Database**
-   
+
       The database was designed to store the Admin details as well as the users details. These are stored in the tables admin and users.
-  
+
   2. **Routes**
-   
+
       Here are the application routes:
 
       | Route       | Method      | Description      |
@@ -282,19 +282,19 @@ Here is how to set up the application locally:
       | '/auth/me'     | PUT         | Update a logged in admins data. |
       | '/auth/me'     | DELETE      | Delete a logged in admins data. |
       | '/auth/admins'     | GET         | Get all logged in admins data. |
-        
+
   3. **Logging**
-   
+
       The application logs to the standard output as well as to AWS OpnSearch using AWS Firehose. Both logging options use custom loggers.
-  
+
   4. **Security**
 
       The application uses JSON Web Tokens to authorize access to protected routes. The passwords are also encrypted.
-  
+
  #### 2. Project Management
- 
+
    1. **Coding standards** </br>
-   
+
       The application had to adhere to the following coding standards:
       1. Variable names
       2. Function names
@@ -306,11 +306,11 @@ Here is how to set up the application locally:
       8. Releases have to be tagged.
       9. Use pre-commit to run code quality checks
       10. Use comitizen to format commit messages
-   
+
    2. **Application development process management** </br>
-   
+
       The project uses JIRA for management.
- 
+
  #### 3. Development Workflow
 
  The application uses atleast 5 branches:
@@ -320,7 +320,7 @@ Here is how to set up the application locally:
   3. Staging branch holds the code that is currently being tested for production.
   4. The release branch holds all the assets used when creating a release.
   5. The production branch holds the code for the currently deployed application.
-   
+
 The development workflow follows the following steps:
 
   1. A feature branch is created for the development of a new feature.
@@ -373,7 +373,7 @@ The deployemt process for this application can be divided into two groups:
 The initial deployment describes the first dployment to the AWS EC2 instance. The process involves the following steps:
 
  1. **Setting up an AWS EC2 instance**
-   
+
     This involves the following steps:
 
       1. Provide an AWS EC2 instance, with latest Ubuntu version and ssh into then instance
@@ -387,11 +387,11 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       9. Create an elastic IP for the EC2 instance.
 
  2. **Cloning the project**
-   
+
       Clone the development branch of the project into the server. Make sure that you are logged in as the created user.
 
  3. **Setting up the application**
-   
+
       This involves the following steps:
 
       1. Navigate into the cloned application folder
@@ -401,7 +401,7 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       5. Create the project secrets
 
  4. **Creating a service**
-   
+
       Create a new service that automatically start the application when the server is booted. Enable the service and start it.
 
       Here is the service template:
@@ -424,11 +424,11 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       ```
 
  5. **Setting up the application domain**
-   
+
       Purchase a domain name then use Route53 to create a hosted zone.
 
  6. **Setting up the application server with the domain**
-   
+
       Update the nginx config to route traffic form port 80 to port 5000 for the gunicorn server. Here is a sample config:
 
       ```sh
@@ -450,13 +450,13 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
                           proxy_redirect off;
                   }
 
-          }        
+          }
       ```
 
       Use certbot to generate an SSL certficate for your domain.
 
  7. **Launching the application**
-   
+
       Restart the created service.
 
 8. **Setting up Logging**
@@ -509,6 +509,45 @@ DeployDev:
 
 ## Releases
 
+## v0.1.0 (2022-07-12)
+
+### Feat
+
+- adds the project layout.
+
+## v0.0.1 (2022-07-12)
+
+### Feat
+
+- adds the makefile.
+- creates the deployment instructions.
+- creates the deployment instructions.
+- creates the deployment instructions.
+- creates the deployment instructions.
+- creates the deployment instructions.
+- creates the deployment instructions.
+- creates the deployment instructions.
+- adds the application routes.
+- adds the development workflow.
+- shows how to install the application.
+- shows how to install the application.
+- shows how to develop the project locally.
+- adds the application structure.
+- creates the initial layout.
+- adds the video showing app usage.
+- shows how to use the application.
+- updates the project description.
+- resizes the images.
+- adds the header image.
+- adds the header image.
+- Creates the section headers.
+
+### Fix
+
+- uses gif.
+- using mp4
+- fixes the video tag.
+
 ## Contribution
 
 1. Fork it https://github.com/twyle/repo-template/fork
@@ -521,7 +560,7 @@ DeployDev:
 
 Lyle Okoth – [@lylethedesigner](https://twitter.com/lylethedesigner) on twitter </br>
 
-[lyle okoth](https://medium.com/@lyle-okoth) on medium </br> 
+[lyle okoth](https://medium.com/@lyle-okoth) on medium </br>
 
 My email is lyceokoth@gmail.com </br>
 
