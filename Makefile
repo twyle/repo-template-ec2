@@ -8,7 +8,7 @@ install-dev:
 	@pip install -r requirements-dev.txt
 
 run:
-	@cd services/web/ && gunicorn -b 0.0.0.0:5000 manage:app
+	@cd services/web/ && gunicorn -w 4 -b 0.0.0.0:5000 manage:app
 
 test:
 	@python -m pytest
