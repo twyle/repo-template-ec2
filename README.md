@@ -459,9 +459,35 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       To set up the database, follow these steps:
 
       1. Install PostgreSQL
+
+          ```sh
+          sudo apt install postgresql postgresql-contrib -y
+          ```
+
       2. Update the default ```postgres``` user's password
+
+          ```sh
+          sudo -i -u postgres
+          psql -U postgres
+          \password
+          \q
+          exit
+          ```
+
       3. Update the postgres config to allow remote connections and replace peer authentication.
+
+        Update ```/etc/postgresql/14/main/postgresql.conf``` to allow for connections from all ips
+
+        Update ```/etc/postgresql/14/main/pg_hba.conf``` to allow md5 authentication from localhost.
+
       4. Restart the database and create the development tables.
+
+          ```sh
+          sudo systemctl restart postgresql
+          psql -U postgres
+          CREATE DATABASE lyle;
+          \q
+          ```
 
  3. **Cloning the project**
 
@@ -543,20 +569,28 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       Here is the service template:
 
       ```sh
-        [Unit]
-        Description=Gunicorn instance to serve the api
-        After=network.target
+      [Unit]
+      Description=Gunicorn instance to serve the api
+      After=network.target
 
-        [Service]
-        User=lyle
-        Group=lyle
-        WorkingDirectory=/home/lyle/repo-template/services/web
-        Environment="PATH=/home/lyle/repo-template/services/web/venv/bin"
-        EnvironmentFile=/home/lyle/.env
-        ExecStart=/home/lyle/repo-template/services/web/venv/bin/gunicorn --workers 4 --bind 0.0.0.0:5000 manage:app
+      [Service]
+      User=lyle
+      Group=lyle
+      WorkingDirectory=/home/lyle/repo-template-ec2/services/web
+      Environment="PATH=/home/lyle/repo-template-ec2/services/web/venv/bin"
+      EnvironmentFile=/home/lyle/.env
+      ExecStart=/home/lyle/repo-template-ec2/services/web/venv/bin/gunicorn --workers 4 --bind 0.0.0.0:5000 manage:app
 
-        [Install]
-        WantedBy=multi-user.target
+      [Install]
+      WantedBy=multi-user.target
+      ```
+
+      Create the service using the above template:
+
+      ```sh
+      sudo nano /etc/systemd/system/gunicorn.service
+      sudo systemctl enable gunicorn
+      sudo systemctl start gunicorn
       ```
 
  6. **Setting up the application domain**
@@ -572,7 +606,7 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
                   listen 80 default_server;
                   listen [::]:80 default_server;
 
-                  server_name _; # replace with specific domain name like sanjeev.com
+                  server_name _; # replace with specific domain name like twyl.xyz
 
                   location / {
                           proxy_pass http://localhost:5000;
