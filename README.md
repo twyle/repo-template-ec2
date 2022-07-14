@@ -402,17 +402,18 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       2. Update and upgrade the packages
       3. Install the python package manager (python3-pip)
       4. Install the virtual environment manager (python3-venv)
-      5. Install the PostgreSQL database
-      6. Setup the database, to disable peer authentication, to allow access from anywhere. Also set up the postgres user, with a password and create the development database.
-      7. Install nginx, enable it and start it.
-      8. Create a new user, and give them admin access.
-      9. Create an elastic IP for the EC2 instance.
+      5. Install nginx, enable it and start it.
+      6. Create a new user, and give them admin access.
+      7. Create an elastic IP for the EC2 instance.
 
- 2. **Cloning the project**
+ 2. **Setting up the PostgreSQL database**
+      Use the AWS RDBMS Free tier to set up a PostgreSQL Database.
+
+ 3. **Cloning the project**
 
       Clone the development branch of the project into the server. Make sure that you are logged in as the created user.
 
- 3. **Setting up the application**
+ 4. **Setting up the application**
 
       This involves the following steps:
 
@@ -421,8 +422,10 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       3. Update the package manager
       4. Install the runtime dependancies
       5. Create the project secrets
+      6. Create the database tables
+      7. Create the databasemigrations
 
- 4. **Creating a service**
+ 5. **Creating a service**
 
       Create a new service that automatically start the application when the server is booted. Enable the service and start it.
 
@@ -445,11 +448,11 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
         WantedBy=multi-user.target
       ```
 
- 5. **Setting up the application domain**
+ 6. **Setting up the application domain**
 
       Purchase a domain name then use Route53 to create a hosted zone.
 
- 6. **Setting up the application server with the domain**
+ 7. **Setting up the application server with the domain**
 
       Update the nginx config to route traffic form port 80 to port 5000 for the gunicorn server. Here is a sample config:
 
@@ -477,11 +480,11 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
 
       Use certbot to generate an SSL certficate for your domain.
 
- 7. **Launching the application**
+ 8. **Launching the application**
 
       Restart the created service.
 
-8. **Setting up Logging**
+ 9. **Setting up Logging**
 
       This involves creating a FirehoseDeliveryStream as well as AWS OpenSearch.
 
