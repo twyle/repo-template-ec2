@@ -623,7 +623,9 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
           }
       ```
 
-      Use certbot to generate an SSL certficate for your domain.
+      Modify the ```/etc/ginx/sites-available/default``` using the above template then restart nginx.
+
+      Use certbot to generate an SSL certficate for your domain. Follow the instructions from the [official certbot site.](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal)
 
  8. **Launching the application**
 
@@ -635,7 +637,7 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
 
       Once the application is up and running, you can view the logs by heading over to the OpenSearch dashboard. Here is a video showing some logs:
 
-      ![](resources/videos/header.gif)
+      ![](resources/videos/logging.gif)
 
 The incremental deployment describes the process of deploying new changes to the already deployed application. It involves the following steps:
 
