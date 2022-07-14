@@ -399,31 +399,142 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
     This involves the following steps:
 
       1. Provide an AWS EC2 instance, with latest Ubuntu version and ssh into then instance
+
+          ```sh
+          ssh -i "ec2.pem" ubuntu@ec2-xx-206-xx-100.compute-1.amazonaws.com
+          ```
+
       2. Update and upgrade the packages
+
+          ```sh
+          sudo apt update && sudo apt upgrade -y
+          ```
+
       3. Install the python package manager (python3-pip)
+
+          ```sh
+          sudo apt install python3-pip -y
+          ```
+
       4. Install the virtual environment manager (python3-venv)
+
+          ```sh
+          sudo apt install python3-venv -y
+          ```
+
       5. Install nginx, enable it and start it.
+
+          ```sh
+          sudo apt install nginx -y
+          ```
+
       6. Create a new user, and give them admin access.
-      7. Create an elastic IP for the EC2 instance.
+
+          ```sh
+          adduser lyle
+          sudo usermod -aG sudo lyle
+          ```
+
+      7. Enable ssh into the created user account
+
+          ```sh
+           sudo su - lyle
+           mkdir .ssh
+           chmod 700 .ssh
+           touch .ssh/authorized_keys
+           chmod 600 .ssh/authorized_keys
+          ```
+
+          Retrieve the public key from the private key:
+
+          ```sh
+          ssh-keygen -y -f ec2.pem
+          ```
+
+          copy and paste into the .ssh/authorized_keys file
+
+      8. Create an elastic IP for the EC2 instance.
 
  2. **Setting up the PostgreSQL database**
-      Use the AWS RDBMS Free tier to set up a PostgreSQL Database.
+      To set up the database, follow these steps:
+
+      1. Install PostgreSQL
+      2. Update the default ```postgres``` user's password
+      3. Update the postgres config to allow remote connections and replace peer authentication.
+      4. Restart the database and create the development tables.
 
  3. **Cloning the project**
 
       Clone the development branch of the project into the server. Make sure that you are logged in as the created user.
+
+      ```sh
+      git clone repo-template-ec2
+      ```
 
  4. **Setting up the application**
 
       This involves the following steps:
 
       1. Navigate into the cloned application folder
+
+        ```sh
+        cd repo-template-ec2/services/web
+        ```
       2. Create a python3 virtual environment
+
+        ```sh
+        python3 -m venv venv
+        source venv
+        ```
+
       3. Update the package manager
+
+        ```sh
+        cd repo-template
+        make update
+        ```
+
       4. Install the runtime dependancies
+
+        ```sh
+        make install
+        ```
+
       5. Create the project secrets
+
+        ```sh
+        touch /home/lyle/.env
+        nano /home/lyle/.env
+        ```
+
+        Then add the .env file to the bash profile and source the bash profile.
+
+        ```sh
+        nano /home/lyle/.profile
+        ```
+
+        Then profile the following:
+
+        ```sh
+        set -o allexport;source /home/lyle/.env; set +o allexport
+        ```
+
+        Then source the bash profile:
+
+        ```sh
+        source /home/lyle/.profile
+        ```
+
       6. Create the database tables
-      7. Create the databasemigrations
+
+        ```sh
+        cd web/services
+        source venv/bin/activate
+        python manage.py create_db
+        python manage.py seed_db
+        ```
+
+      7. Create the database migrations
 
  5. **Creating a service**
 
