@@ -56,7 +56,7 @@ This application has several features including:
  3. Auto-deployed to AWS using GitHub Actions.
  4. Uses gunicorn as the application server and nginx as the proxy.
  5. Uses AWS SES to send emails.
- 6. Uses AWS Opensearch and Firehose for logging as filebeats.
+ 6. Uses AWS Opensearch and Firehose for logging as well as filebeats.
  7. Uses AWS Secrets manager to manage the application secrets and AWS KMS for key management.
  8. Uses PostgreSQL for data storage.
  9. Uses JSON Web Tokens to authorize users.
