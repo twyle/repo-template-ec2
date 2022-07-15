@@ -255,6 +255,8 @@ Here is how to set up the application locally:
 
       ```sh
       make start-db-containers
+      make create-db
+      make seed-db
       ```
 
   8. Start the application:
@@ -431,7 +433,7 @@ The initial deployment describes the first dployment to the AWS EC2 instance. Th
       6. Create a new user, and give them admin access.
 
           ```sh
-          adduser lyle
+          sudo adduser lyle
           sudo usermod -aG sudo lyle
           ```
 
