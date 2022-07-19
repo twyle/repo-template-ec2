@@ -1,4 +1,4 @@
-# A Template For Creating Repositories
+# A Template For Deploying a flask app to EC2
 
 > This flask application enables enables an admin to register then authorizes them to create new users.
 
